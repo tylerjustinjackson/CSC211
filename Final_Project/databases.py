@@ -7,32 +7,32 @@ def create_tables(db_name: str) -> None:
     conn: Connection = sqlite3.connect(db_name)
     cursor = conn.cursor()
 
-    # Create Employee Login table
+    # Create Employee Login table with ID constraints
     cursor.execute(
         """
     CREATE TABLE IF NOT EXISTS Employee_Login (
-        Employee_ID INTEGER PRIMARY KEY,
+        Employee_ID INTEGER PRIMARY KEY CHECK (Employee_ID >= 111111 AND Employee_ID < 1000000),
         First_Name TEXT NOT NULL,
         Last_Name TEXT NOT NULL,
         Password TEXT NOT NULL,
-        Phone_Number TEXT,
-        Email_Address TEXT
+        Phone_Number TEXT NOT NULL,
+        Email_Address TEXT NOT NULL
     )
     """
     )
 
-    # Create Property table
+    # Create Property table with ID constraints
     cursor.execute(
         """
     CREATE TABLE IF NOT EXISTS Property (
-        Property_ID INTEGER PRIMARY KEY,
+        Property_ID INTEGER PRIMARY KEY CHECK (Property_ID >= 111111 AND Property_ID < 1000000),
         Project_ID INTEGER,
         Employee_ID INTEGER,
         Property_Type TEXT NOT NULL,
         Manufacturer TEXT NOT NULL,
-        Year_Manufactured INTEGER,
+        Year_Manufactured INTEGER NOT NULL,
         Purchase_Date TEXT,
-        MSRP REAL,
+        MSRP REAL NOT NULL,
         Last_Maintenance_Date TEXT,
         Decommissioned BOOLEAN NOT NULL,
         Decommission_Date TEXT,
@@ -52,11 +52,11 @@ def create_tables(db_name: str) -> None:
     """
     )
 
-    # Create Projects table
+    # Create Projects table with ID constraints
     cursor.execute(
         """
     CREATE TABLE IF NOT EXISTS Projects (
-        Project_ID INTEGER PRIMARY KEY,
+        Project_ID INTEGER PRIMARY KEY CHECK (Project_ID >= 111111 AND Project_ID < 1000000),
         Project_Title TEXT NOT NULL,
         Skills_Needed TEXT
     )
@@ -76,7 +76,7 @@ def create_tables(db_name: str) -> None:
     """
     )
 
-    # Commit the changes and closes the connection
+    # Commit the changes and close the connection
     conn.commit()
     conn.close()
 
@@ -84,4 +84,4 @@ def create_tables(db_name: str) -> None:
 
 
 if __name__ == "__main__":
-    create_tables("FindMyProperty.db")
+    create_tables("company_database.db")
