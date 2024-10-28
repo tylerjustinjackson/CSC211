@@ -113,7 +113,7 @@ def verify_password(hashed: bytes, password: str) -> bool:
 
 
 if __name__ == "__main__":
-    db_name = "company_database.db"
+    db_name = "FindMyProperty.db"
     employee_info = get_employee_details()
     insert_employee(db_name, employee_info)
 

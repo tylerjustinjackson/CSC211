@@ -84,4 +84,4 @@ def create_tables(db_name: str) -> None:
 
 
 if __name__ == "__main__":
-    create_tables("company_database.db")
+    db_name = "FindMyProperty.db"

@@ -133,6 +133,6 @@ def insert_property(db_name: str, property_details: dict) -> None:
 
 
 if __name__ == "__main__":
-    db_name = "company_database.db"
+    db_name = "FindMyProperty.db"
     property_info = get_property_details()
     insert_property(db_name, property_info)
