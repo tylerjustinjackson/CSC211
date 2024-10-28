@@ -1,5 +1,7 @@
 import sqlite3
 from sqlite3 import Connection
+from faker import Faker
+import random
 
 
 def create_tables(db_name: str) -> None:
@@ -75,13 +77,3 @@ def create_tables(db_name: str) -> None:
     )
     """
     )
-
-    # Commit the changes and close the connection
-    conn.commit()
-    conn.close()
-
-    print("Tables created successfully!")
-
-
-if __name__ == "__main__":
-    db_name = "FindMyProperty.db"
